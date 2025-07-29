@@ -6,25 +6,37 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B53153602E37960A00F138B5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B531535F2E37960A00F138B5 /* .swiftlint.yml */; };
+		B53153632E37965600F138B5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B53153622E37965600F138B5 /* RxCocoa */; };
+		B53153652E37965600F138B5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B53153642E37965600F138B5 /* RxRelay */; };
+		B53153672E37965600F138B5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B53153662E37965600F138B5 /* RxSwift */; };
+		B531536A2E37966000F138B5 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = B53153692E37966000F138B5 /* ReactorKit */; };
+		B531536D2E37966A00F138B5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B531536C2E37966A00F138B5 /* Kingfisher */; };
+		B53153702E37967300F138B5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B531536F2E37967300F138B5 /* SnapKit */; };
+		B53153732E37967F00F138B5 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = B53153722E37967F00F138B5 /* Then */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		36F152CC2E379C61007D6E07 /* iTunesStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B53153462E3794A700F138B5 /* iTunesStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B531535F2E37960A00F138B5 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		36F152DE2E379C62007D6E07 /* Exceptions for "iTunesStore" folder in "iTunesStore" target */ = {
+		B53153582E3794A900F138B5 /* Exceptions for "iTunesStore" folder in "iTunesStore" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 36F152CB2E379C61007D6E07 /* iTunesStore */;
+			target = B53153452E3794A700F138B5 /* iTunesStore */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		36F152CE2E379C61007D6E07 /* iTunesStore */ = {
+		B53153482E3794A700F138B5 /* iTunesStore */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				36F152DE2E379C62007D6E07 /* Exceptions for "iTunesStore" folder in "iTunesStore" target */,
+				B53153582E3794A900F138B5 /* Exceptions for "iTunesStore" folder in "iTunesStore" target */,
 			);
 			path = iTunesStore;
 			sourceTree = "<group>";
@@ -32,28 +44,36 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		36F152C92E379C61007D6E07 /* Frameworks */ = {
+		B53153432E3794A700F138B5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53153672E37965600F138B5 /* RxSwift in Frameworks */,
+				B53153652E37965600F138B5 /* RxRelay in Frameworks */,
+				B531536A2E37966000F138B5 /* ReactorKit in Frameworks */,
+				B53153732E37967F00F138B5 /* Then in Frameworks */,
+				B53153702E37967300F138B5 /* SnapKit in Frameworks */,
+				B53153632E37965600F138B5 /* RxCocoa in Frameworks */,
+				B531536D2E37966A00F138B5 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		36F152C32E379C61007D6E07 = {
+		B531533D2E3794A700F138B5 = {
 			isa = PBXGroup;
 			children = (
-				36F152CE2E379C61007D6E07 /* iTunesStore */,
-				36F152CD2E379C61007D6E07 /* Products */,
+				B531535F2E37960A00F138B5 /* .swiftlint.yml */,
+				B53153482E3794A700F138B5 /* iTunesStore */,
+				B53153472E3794A700F138B5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		36F152CD2E379C61007D6E07 /* Products */ = {
+		B53153472E3794A700F138B5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				36F152CC2E379C61007D6E07 /* iTunesStore.app */,
+				B53153462E3794A700F138B5 /* iTunesStore.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,74 +81,111 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		36F152CB2E379C61007D6E07 /* iTunesStore */ = {
+		B53153452E3794A700F138B5 /* iTunesStore */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 36F152DF2E379C62007D6E07 /* Build configuration list for PBXNativeTarget "iTunesStore" */;
+			buildConfigurationList = B53153592E3794A900F138B5 /* Build configuration list for PBXNativeTarget "iTunesStore" */;
 			buildPhases = (
-				36F152C82E379C61007D6E07 /* Sources */,
-				36F152C92E379C61007D6E07 /* Frameworks */,
-				36F152CA2E379C61007D6E07 /* Resources */,
+				B531535E2E3795BF00F138B5 /* SwiftLint Script */,
+				B53153422E3794A700F138B5 /* Sources */,
+				B53153432E3794A700F138B5 /* Frameworks */,
+				B53153442E3794A700F138B5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				36F152CE2E379C61007D6E07 /* iTunesStore */,
+				B53153482E3794A700F138B5 /* iTunesStore */,
 			);
 			name = iTunesStore;
 			packageProductDependencies = (
+				B53153622E37965600F138B5 /* RxCocoa */,
+				B53153642E37965600F138B5 /* RxRelay */,
+				B53153662E37965600F138B5 /* RxSwift */,
+				B53153692E37966000F138B5 /* ReactorKit */,
+				B531536C2E37966A00F138B5 /* Kingfisher */,
+				B531536F2E37967300F138B5 /* SnapKit */,
+				B53153722E37967F00F138B5 /* Then */,
 			);
 			productName = iTunesStore;
-			productReference = 36F152CC2E379C61007D6E07 /* iTunesStore.app */;
+			productReference = B53153462E3794A700F138B5 /* iTunesStore.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		36F152C42E379C61007D6E07 /* Project object */ = {
+		B531533E2E3794A700F138B5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					36F152CB2E379C61007D6E07 = {
+					B53153452E3794A700F138B5 = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
-			buildConfigurationList = 36F152C72E379C61007D6E07 /* Build configuration list for PBXProject "iTunesStore" */;
+			buildConfigurationList = B53153412E3794A700F138B5 /* Build configuration list for PBXProject "iTunesStore" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 36F152C32E379C61007D6E07;
+			mainGroup = B531533D2E3794A700F138B5;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B53153612E37965600F138B5 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				B53153682E37966000F138B5 /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				B531536B2E37966A00F138B5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B531536E2E37967300F138B5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B53153712E37967F00F138B5 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 36F152CD2E379C61007D6E07 /* Products */;
+			productRefGroup = B53153472E3794A700F138B5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				36F152CB2E379C61007D6E07 /* iTunesStore */,
+				B53153452E3794A700F138B5 /* iTunesStore */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		36F152CA2E379C61007D6E07 /* Resources */ = {
+		B53153442E3794A700F138B5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B53153602E37960A00F138B5 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B531535E2E3795BF00F138B5 /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		36F152C82E379C61007D6E07 /* Sources */ = {
+		B53153422E3794A700F138B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,14 +195,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		36F152E02E379C62007D6E07 /* Debug */ = {
+		B531535A2E3794A900F138B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LW9AR5U74A;
+				DEVELOPMENT_TEAM = 2WSJ3W54FF;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iTunesStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -157,22 +215,27 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.housedone.iTunesStore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophia.iTunesStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		36F152E12E379C62007D6E07 /* Release */ = {
+		B531535B2E3794A900F138B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LW9AR5U74A;
+				DEVELOPMENT_TEAM = 2WSJ3W54FF;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iTunesStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -184,15 +247,19 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.housedone.iTunesStore;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sophia.iTunesStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		36F152E22E379C62007D6E07 /* Debug */ = {
+		B531535C2E3794A900F138B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -227,7 +294,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = LW9AR5U74A;
+				DEVELOPMENT_TEAM = 2WSJ3W54FF;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -256,7 +323,7 @@
 			};
 			name = Debug;
 		};
-		36F152E32E379C62007D6E07 /* Release */ = {
+		B531535D2E3794A900F138B5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -291,7 +358,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = LW9AR5U74A;
+				DEVELOPMENT_TEAM = 2WSJ3W54FF;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -316,25 +383,106 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		36F152C72E379C61007D6E07 /* Build configuration list for PBXProject "iTunesStore" */ = {
+		B53153412E3794A700F138B5 /* Build configuration list for PBXProject "iTunesStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				36F152E22E379C62007D6E07 /* Debug */,
-				36F152E32E379C62007D6E07 /* Release */,
+				B531535C2E3794A900F138B5 /* Debug */,
+				B531535D2E3794A900F138B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		36F152DF2E379C62007D6E07 /* Build configuration list for PBXNativeTarget "iTunesStore" */ = {
+		B53153592E3794A900F138B5 /* Build configuration list for PBXNativeTarget "iTunesStore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				36F152E02E379C62007D6E07 /* Debug */,
-				36F152E12E379C62007D6E07 /* Release */,
+				B531535A2E3794A900F138B5 /* Debug */,
+				B531535B2E3794A900F138B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B53153612E37965600F138B5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+		B53153682E37966000F138B5 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
+		B531536B2E37966A00F138B5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
+		B531536E2E37967300F138B5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		B53153712E37967F00F138B5 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B53153622E37965600F138B5 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B53153612E37965600F138B5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B53153642E37965600F138B5 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B53153612E37965600F138B5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		B53153662E37965600F138B5 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B53153612E37965600F138B5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		B53153692E37966000F138B5 /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B53153682E37966000F138B5 /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+		B531536C2E37966A00F138B5 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B531536B2E37966A00F138B5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		B531536F2E37967300F138B5 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B531536E2E37967300F138B5 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		B53153722E37967F00F138B5 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B53153712E37967F00F138B5 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 36F152C42E379C61007D6E07 /* Project object */;
+	rootObject = B531533E2E3794A700F138B5 /* Project object */;
 }

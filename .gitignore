@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,xcode,swift,cocoapods
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,xcode,swift,cocoapods
+# Created by https://www.toptal.com/developers/gitignore/api/swift,xcode,macos,cocoapods
+# Edit at https://www.toptal.com/developers/gitignore?templates=swift,xcode,macos,cocoapods
 
 ### CocoaPods ###
 ## CocoaPods GitIgnore Template
@@ -38,16 +38,13 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### macOS Patch ###
-# iCloud generated files
-*.icloud
-
 ### Swift ###
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## User settings
+*.xcuserstate
 xcuserdata/
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
@@ -127,16 +124,22 @@ fastlane/test_output
 iOSInjectionProject/
 
 ### Xcode ###
+# Xcode
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-## Xcode 8 and earlier
+
+## Gcc Patch
+/*.gcno
 
 ### Xcode Patch ###
-*.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
-!*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
-/*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
+*.xcconfig
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,xcode,swift,cocoapods
+### SwiftPackageManager ###
+Packages
+xcuserdata
+
+# End of https://www.toptal.com/developers/gitignore/api/swift,xcode,macos,cocoapods
