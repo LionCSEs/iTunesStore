@@ -39,7 +39,7 @@ enum iTunesEndpoint: APIEndpoint {
     return "/search"
   }
   
-  var parameters: [String : String] {
+  var parameters: [String: String] {
     var params = ["lang": "ko_KR"]
     
     switch self {
