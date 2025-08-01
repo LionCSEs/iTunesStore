@@ -16,10 +16,27 @@ class SearchViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel: SearchViewModel
     
+    var searchText = "" {
+        didSet {
+            searchTextRelay.accept(searchText)
+        }
+    }
+    private let searchTextRelay = PublishRelay<String>()
+    
     typealias DataSource = UICollectionViewDiffableDataSource<SearchSection, SearchItem>
     typealias Snapshot = NSDiffableDataSourceSnapshot<SearchSection, SearchItem>
     
     private lazy var dataSource = createDataSource(collectionView: collectionView)
+    
+    let labelTapGesture = UITapGestureRecognizer()
+    let viewTapGesture = UITapGestureRecognizer()
+    
+    private lazy var searchTextLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 26, weight: .bold)
+        $0.textColor = .label
+        $0.isUserInteractionEnabled = true
+        $0.addGestureRecognizer(labelTapGesture)
+    }
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: LayoutManager.shared.createCompositionalLayout(for: .search)).then {
         $0.backgroundColor = .systemBackground
@@ -37,40 +54,61 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        viewModel.action.accept(.fetchSearchData)
         bind()
+        viewTapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(viewTapGesture)
     }
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        view.addSubview(collectionView)
+        [searchTextLabel, collectionView].forEach { view.addSubview($0) }
+        
+        searchTextLabel.snp.makeConstraints {
+            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
+        
         collectionView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+            $0.top.equalTo(searchTextLabel.snp.bottom).offset(6)
+            $0.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
+    // MARK: - 바인딩
+    
     private func bind() {
+        searchTextRelay.bind(to: searchTextLabel.rx.text).disposed(by: disposeBag)
+        
+        // 검색어 바인딩
+        searchTextRelay
+            .map {.fetchSearchData(term: $0)}
+            .bind(to: viewModel.action)
+            .disposed(by: disposeBag)
+        
+        // 검색 결과 바인딩
         viewModel.state.map(\.searchItems)
-            .asDriver(onErrorJustReturn: [])
             .drive { [weak self] items in
                 self?.updateSnapShot(items)
             }
             .disposed(by: disposeBag)
         
+        // 에러 메시지 바인딩
         viewModel.state.map(\.errorMessage)
-            .asDriver(onErrorJustReturn: "")
             .drive { [weak self] errorMessage in
                 self?.showAlert(message: errorMessage)
             }
             .disposed(by: disposeBag)
     }
     
+    // MARK: - Diffable DataSource 생성
+    
     private func createDataSource(collectionView: UICollectionView) -> DataSource {
+        // 셀 등록
         let cellRegistration = UICollectionView.CellRegistration<SearchCell, SearchItem> {
             cell, _, searchItem in
-            cell.configure(musicItem: searchItem.item)
+            cell.configure(searchItem: searchItem.item)
         }
         
+        // 섹션 헤더 등록
         let headerRegistration = UICollectionView.SupplementaryRegistration<SearchSectionHeaderView>(
             elementKind: UICollectionView.elementKindSectionHeader
         ) { headerView, _, indexPath in
@@ -78,6 +116,7 @@ class SearchViewController: UIViewController {
             headerView.configure(title: section.title)
         }
         
+        // 셀 제공 로직
         let dataSource = DataSource(collectionView: collectionView) {
             collectionView, indexPath, searchItem in
             return collectionView.dequeueConfiguredReusableCell(
@@ -85,6 +124,7 @@ class SearchViewController: UIViewController {
             )
         }
         
+        // 헤더 제공 로직
         dataSource.supplementaryViewProvider = {
             collectionView, _, indexPath in
             return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
@@ -92,6 +132,8 @@ class SearchViewController: UIViewController {
         
         return dataSource
     }
+    
+    // MARK: - Snapshot 업데이트
     
     func updateSnapShot(_ items: [[Media]]) {
         var snapshot = Snapshot()

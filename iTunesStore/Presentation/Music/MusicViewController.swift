@@ -16,6 +16,7 @@ class MusicViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel: MusicViewModel
     private let searchController: UISearchController
+    private let searchResultController: SearchViewController
     
     typealias DataSource = UICollectionViewDiffableDataSource<MusicSection, MusicItem>
     typealias Snapshot = NSDiffableDataSourceSnapshot<MusicSection, MusicItem>
@@ -26,9 +27,10 @@ class MusicViewController: UIViewController {
         $0.backgroundColor = .systemBackground
     }
     
-    init(viewModel: MusicViewModel, searchResultController: UIViewController) {
+    init(viewModel: MusicViewModel, searchResultController: SearchViewController) {
         self.viewModel = viewModel
         self.searchController = UISearchController(searchResultsController: searchResultController)
+        self.searchResultController = searchResultController
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,14 +41,13 @@ class MusicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        viewModel.action.accept(.fetchMusic)        // 초기 음악 요청
         bind()
     }
 
     private func setupUI() {
         view.backgroundColor = .systemBackground
         searchController.searchBar.placeholder = "영화, 팟캐스트"
-        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.obscuresBackgroundDuringPresentation = false
         
         navigationItem.title = "Music"
         navigationItem.searchController = searchController
@@ -63,9 +64,11 @@ class MusicViewController: UIViewController {
     // MARK: - 바인딩
     
     private func bind() {
+        // 초기 음악 요청
+        viewModel.action.accept(.fetchMusic)
+        
         // 음악 리스트 바인딩
         viewModel.state.map(\.musicItems)
-            .asDriver(onErrorJustReturn: [])
             .drive { [weak self] musicItems in
                 self?.updateSnapShot(musicItems)
             }
@@ -73,14 +76,31 @@ class MusicViewController: UIViewController {
         
         // 에러 메시지 바인딩
         viewModel.state.map(\.errorMessage)
-            .asDriver(onErrorJustReturn: "")
             .drive { [weak self] errorMessage in
                 self?.showAlert(message: errorMessage)
             }
             .disposed(by: disposeBag)
         
-        // searchController.searchBar.rx.text....???
+        // 검색 입력값 바인딩
+        searchController.searchBar.rx.text.orEmpty
+            .distinctUntilChanged()
+            .debounce(.microseconds(500), scheduler: MainScheduler.instance)
+            .bind(to: searchResultController.rx.searchText)
+            .disposed(by: disposeBag)
             
+        // 검색 라벨 바인딩
+        searchResultController.labelTapGesture.rx.event
+            .bind { [weak self] _ in
+                self?.searchController.isActive = false
+            }
+            .disposed(by: disposeBag)
+        
+        // 키보드 내리기
+        searchResultController.viewTapGesture.rx.event
+            .bind { [weak self] _ in
+                self?.searchController.searchBar.resignFirstResponder()
+            }
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Diffable DataSource 생성

@@ -7,35 +7,40 @@
 
 import RxSwift
 import RxRelay
+import RxCocoa
 
 class SearchViewModel {
+    // UI에 상태 전달 BehaviorRelay
     private let stateRelay = BehaviorRelay(value: State(searchItems: [], errorMessage: ""))
     
+    // 유저 액션 입력 받는 PublishRelay
     let action = PublishRelay<Action>()
 
     let disposeBag = DisposeBag()
 
-    var state: Observable<State> {
-        stateRelay.asObservable()
+    // 외부에서 상태 구독
+    var state: Driver<State> {
+        stateRelay.asDriver(onErrorJustReturn: State(searchItems: [], errorMessage: ""))
     }
 
     init() {
         action
             .subscribe(onNext: { [weak self] action in
                 switch action {
-                case .fetchSearchData:
-                    self?.fetchMovieAndPodcast()
+                case .fetchSearchData(let term):
+                    self?.fetchMovieAndPodcast(term)
                 }
             })
             .disposed(by: disposeBag)
     }
 
-    private func fetchMovieAndPodcast() {
+    // 각 데이터 리스트 받음
+    private func fetchMovieAndPodcast(_ term: String) {
         let movie: Single<[Media]> = NetworkManager.shared.fetch(
-            apiEndPoint: .search(query: SearchSection.movie.query, term: "Marvel")
+            apiEndPoint: .search(query: SearchSection.movie.query, term: term)
         )
         let podcast: Single<[Media]> = NetworkManager.shared.fetch(
-            apiEndPoint: .search(query: SearchSection.podcast.query, term: "Marvel")
+            apiEndPoint: .search(query: SearchSection.podcast.query, term: term)
         )
 
         Single.zip(movie, podcast)
@@ -57,7 +62,7 @@ class SearchViewModel {
 
 extension SearchViewModel {
     enum Action {
-        case fetchSearchData
+        case fetchSearchData(term: String)
     }
 
     struct State {

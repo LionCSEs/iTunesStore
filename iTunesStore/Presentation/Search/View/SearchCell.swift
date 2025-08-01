@@ -75,11 +75,11 @@ class SearchCell: UICollectionViewCell {
         artistLabel.text = nil
     }
     
-    func configure(musicItem: Media) {
-        titleLabel.text = musicItem.trackName
-        artistLabel.text = musicItem.artistName
+    func configure(searchItem: Media) {
+        titleLabel.text = searchItem.trackName
+        artistLabel.text = searchItem.artistName
         
-        if let imageURL = URL(string: musicItem.artworkUrl600) {
+        if let imageURL = URL(string: searchItem.artworkUrl600) {
             backgroundImageView.loadImage(from: imageURL)
         } else {
             //backgroundImageView.image = UIImage(named: "musicPlaceholder")

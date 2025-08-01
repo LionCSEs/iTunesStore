@@ -7,6 +7,7 @@
 
 import RxSwift
 import RxRelay
+import RxCocoa
 
 class MusicViewModel {
     // UI에 상태 전달 BehaviorRelay
@@ -17,9 +18,9 @@ class MusicViewModel {
     
     private let disposeBag = DisposeBag()
     
-    // 외부에서 상태를 구독할 수 있게 공개된 Observable
-    var state: Observable<State> {
-        stateRelay.asObservable()
+    // 외부에서 상태 구독
+    var state: Driver<State> {
+        stateRelay.asDriver(onErrorJustReturn: State(musicItems: [], errorMessage: ""))
     }
     
     init () {

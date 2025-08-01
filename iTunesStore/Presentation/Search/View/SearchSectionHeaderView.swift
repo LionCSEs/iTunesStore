@@ -29,8 +29,7 @@ class SearchSectionHeaderView: UICollectionReusableView {
         [titleLabel].forEach { addSubview($0) }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.leading.bottom.equalToSuperview()
         }
     }
     
