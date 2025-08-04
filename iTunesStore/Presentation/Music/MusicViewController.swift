@@ -107,8 +107,8 @@ class MusicViewController: UIViewController {
     
     private func createDataSource(collectionView: UICollectionView) -> DataSource {
         // 봄 섹션 셀 등록
-        let springCellRegistration = UICollectionView.CellRegistration<SpringMusicCell, MusicItem> { cell, _, item in
-            cell.configure(musicItem: item.music)
+        let springCellRegistration = UICollectionView.CellRegistration<SpringMusicAndSearchCell, MusicItem> { cell, _, item in
+            cell.configure(item: item.music)
         }
         
         // 일반 셀 등록 (여름, 가을, 겨울)
@@ -157,8 +157,9 @@ class MusicViewController: UIViewController {
         var snapshot = Snapshot()
         snapshot.appendSections(MusicSection.allCases)
         zip(musicItems, MusicSection.allCases).forEach { musicItems, section in
+            let emptyItem = MusicItem(music: Media(trackId: 0, trackName: "데이터 없음", artistName: "", artworkUrl100: "", releaseDate: "", primaryGenreName: ""), section: section)
             let items = musicItems.map { MusicItem(music: $0, section: section)}
-            snapshot.appendItems(items, toSection: section)
+            snapshot.appendItems(items.isEmpty ? [emptyItem] : items, toSection: section)
         }
         dataSource.apply(snapshot, animatingDifferences: false)
     }

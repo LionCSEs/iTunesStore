@@ -24,21 +24,14 @@ class ListMusicCell: UICollectionViewCell {
     // 앨범 이미지 뷰
     private let albumImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFill
+        $0.backgroundColor = .systemGray6
         $0.layer.cornerRadius = 15
         $0.clipsToBounds = true
     }
     
-    // 곡 제목
-    private let titleLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 16, weight: .bold)
-        $0.textColor = .label
-    }
-    
-    // 아티스트 이름
-    private let artistLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 14, weight: .bold)
-        $0.textColor = .secondaryLabel
-    }
+    // 곡 제목, 아티스트 이름
+    private let titleLabel = TitleLabel(fontSize: 16)
+    private let artistLabel = SubTitleLabel(fontSize: 14)
     
     // 제목과 아티스트 스택뷰
     private lazy var labelStackView = UIStackView(arrangedSubviews: [titleLabel, artistLabel]).then {
@@ -98,7 +91,11 @@ class ListMusicCell: UICollectionViewCell {
         if let imageURL = URL(string: musicItem.artworkUrl600) {
             albumImageView.loadImage(from: imageURL)
         } else {
-            //albumImageView.image = UIImage(named: "musicPlaceholder")
+            albumImageView.contentMode = .center
+            albumImageView.image = UIImage(
+                systemName: "photo",
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: 40)
+            )?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
         }
     }
 }

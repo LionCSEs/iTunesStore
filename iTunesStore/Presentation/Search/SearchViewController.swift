@@ -31,12 +31,7 @@ class SearchViewController: UIViewController {
     let labelTapGesture = UITapGestureRecognizer()
     let viewTapGesture = UITapGestureRecognizer()
     
-    private lazy var searchTextLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 26, weight: .bold)
-        $0.textColor = .label
-        $0.isUserInteractionEnabled = true
-        $0.addGestureRecognizer(labelTapGesture)
-    }
+    private let searchTextLabel = TitleLabel(fontSize: 26)
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: LayoutManager.shared.createCompositionalLayout(for: .search)).then {
         $0.backgroundColor = .systemBackground
@@ -61,10 +56,13 @@ class SearchViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        searchTextLabel.isUserInteractionEnabled = true
+        searchTextLabel.addGestureRecognizer(labelTapGesture)
         [searchTextLabel, collectionView].forEach { view.addSubview($0) }
         
         searchTextLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(15)
         }
         
         collectionView.snp.makeConstraints {
@@ -103,9 +101,9 @@ class SearchViewController: UIViewController {
     
     private func createDataSource(collectionView: UICollectionView) -> DataSource {
         // 셀 등록
-        let cellRegistration = UICollectionView.CellRegistration<SearchCell, SearchItem> {
+        let cellRegistration = UICollectionView.CellRegistration<SpringMusicAndSearchCell, SearchItem> {
             cell, _, searchItem in
-            cell.configure(searchItem: searchItem.item)
+            cell.configure(item: searchItem.item)
         }
         
         // 섹션 헤더 등록
@@ -140,8 +138,9 @@ class SearchViewController: UIViewController {
         snapshot.appendSections(SearchSection.allCases)
         
         zip(items, SearchSection.allCases).forEach { items, section in
+            let emptyItem = SearchItem(item: Media(trackId: 0, trackName: "검색 결과 없음", artistName: "", artworkUrl100: "", releaseDate: "", primaryGenreName: ""), section: section)
             let items = items.map { SearchItem(item: $0, section: section) }
-            snapshot.appendItems(items, toSection: section)
+            snapshot.appendItems(items.isEmpty ? [emptyItem] : items, toSection: section)
         }
         dataSource.apply(snapshot, animatingDifferences: false)
     }
