@@ -1,0 +1,35 @@
+//
+//  SearchSectionHeaderView.swift
+//  iTunesStore
+//
+//  Created by estelle on 8/1/25.
+//
+
+import UIKit
+import SnapKit
+
+class SearchSectionHeaderView: UICollectionReusableView {
+    
+    private let titleLabel = TitleLabel(fontSize: 20)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI() {
+        [titleLabel].forEach { addSubview($0) }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.leading.bottom.equalToSuperview()
+        }
+    }
+    
+    func configure(title: String) {
+        titleLabel.text = title
+    }
+}

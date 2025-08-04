@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		AFD57E862E3BCBC10077A588 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AFD57E852E3BCBC10077A588 /* SnapKit */; };
+		AFD57E892E3BCC290077A588 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = AFD57E882E3BCC290077A588 /* Kingfisher */; };
+		AFD57E8C2E3BCC570077A588 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = AFD57E8B2E3BCC570077A588 /* Then */; };
+		AFD57E8F2E3BCCC80077A588 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = AFD57E8E2E3BCCC80077A588 /* RxCocoa */; };
+		AFD57E912E3BCCC80077A588 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = AFD57E902E3BCCC80077A588 /* RxRelay */; };
+		AFD57E932E3BCCC80077A588 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AFD57E922E3BCCC80077A588 /* RxSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		36F152CC2E379C61007D6E07 /* iTunesStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +45,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFD57E932E3BCCC80077A588 /* RxSwift in Frameworks */,
+				AFD57E912E3BCCC80077A588 /* RxRelay in Frameworks */,
+				AFD57E892E3BCC290077A588 /* Kingfisher in Frameworks */,
+				AFD57E8C2E3BCC570077A588 /* Then in Frameworks */,
+				AFD57E8F2E3BCCC80077A588 /* RxCocoa in Frameworks */,
+				AFD57E862E3BCBC10077A588 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +93,12 @@
 			);
 			name = iTunesStore;
 			packageProductDependencies = (
+				AFD57E852E3BCBC10077A588 /* SnapKit */,
+				AFD57E882E3BCC290077A588 /* Kingfisher */,
+				AFD57E8B2E3BCC570077A588 /* Then */,
+				AFD57E8E2E3BCCC80077A588 /* RxCocoa */,
+				AFD57E902E3BCCC80077A588 /* RxRelay */,
+				AFD57E922E3BCCC80077A588 /* RxSwift */,
 			);
 			productName = iTunesStore;
 			productReference = 36F152CC2E379C61007D6E07 /* iTunesStore.app */;
@@ -107,6 +128,12 @@
 			);
 			mainGroup = 36F152C32E379C61007D6E07;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				AFD57E842E3BCBC10077A588 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				AFD57E872E3BCC290077A588 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				AFD57E8A2E3BCC570077A588 /* XCRemoteSwiftPackageReference "Then" */,
+				AFD57E8D2E3BCCC80077A588 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 36F152CD2E379C61007D6E07 /* Products */;
 			projectDirPath = "";
@@ -152,6 +179,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -179,6 +207,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,6 +364,74 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AFD57E842E3BCBC10077A588 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		AFD57E872E3BCC290077A588 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
+		AFD57E8A2E3BCC570077A588 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		AFD57E8D2E3BCCC80077A588 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AFD57E852E3BCBC10077A588 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFD57E842E3BCBC10077A588 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		AFD57E882E3BCC290077A588 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFD57E872E3BCC290077A588 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		AFD57E8B2E3BCC570077A588 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFD57E8A2E3BCC570077A588 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		AFD57E8E2E3BCCC80077A588 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFD57E8D2E3BCCC80077A588 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		AFD57E902E3BCCC80077A588 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFD57E8D2E3BCCC80077A588 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		AFD57E922E3BCCC80077A588 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AFD57E8D2E3BCCC80077A588 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 36F152C42E379C61007D6E07 /* Project object */;
 }

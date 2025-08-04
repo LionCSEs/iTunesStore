@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  iTunesStore
 //
-//  Created by 김우성 on 7/28/25.
+//  Created by estelle on 7/28/25.
 //
 
 import UIKit
@@ -14,9 +14,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = UINavigationController(rootViewController: ViewController())
-        self.window?.makeKeyAndVisible()
+        let window = UIWindow(windowScene: windowScene)
+        let searchVC = SearchViewController(viewModel: SearchViewModel())
+        let musicVC = MusicViewController(viewModel: MusicViewModel(), searchResultController: searchVC)
+        window.rootViewController = UINavigationController(rootViewController: musicVC)
+        window.makeKeyAndVisible()
+        self.window = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
