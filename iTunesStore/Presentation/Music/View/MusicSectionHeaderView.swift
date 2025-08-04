@@ -6,20 +6,12 @@
 //
 
 import UIKit
-import Then
 import SnapKit
 
 class MusicSectionHeaderView: UICollectionReusableView {
     
-    private let titleLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 20, weight: .bold)
-        $0.textColor = .label
-    }
-    
-    private let subTitleLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 16, weight: .bold)
-        $0.textColor = .secondaryLabel
-    }
+    private let titleLabel = TitleLabel(fontSize: 20)
+    private let subTitleLabel = SubTitleLabel(fontSize: 16)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

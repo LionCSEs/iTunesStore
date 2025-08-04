@@ -1,5 +1,5 @@
 //
-//  SearchCell.swift
+//  SpringMusicCell.swift
 //  iTunesStore
 //
 //  Created by estelle on 8/1/25.
@@ -9,24 +9,19 @@ import UIKit
 import Then
 import SnapKit
 
-class SearchCell: UICollectionViewCell {
+class SpringMusicAndSearchCell: UICollectionViewCell {
     
+    // 배경 이미지
     private let backgroundImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFill
+        $0.backgroundColor = .systemGray6
         $0.clipsToBounds = true
     }
     
+    // 그라데이션용 오버레이 뷰, 곡 제목, 아티스트 이름
     private let gradientView = GradientView()
-    
-    private let titleLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 16, weight: .bold)
-        $0.textColor = .label
-    }
-    
-    private let artistLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 14, weight: .bold)
-        $0.textColor = .secondaryLabel
-    }
+    private let titleLabel = TitleLabel(fontSize: 16)
+    private let artistLabel = SubTitleLabel(fontSize: 14)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,7 +33,8 @@ class SearchCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        layer.shadowColor = UIColor.black.cgColor
+        // 셀 그림자 설정
+        layer.shadowColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 10)
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 8
@@ -75,14 +71,23 @@ class SearchCell: UICollectionViewCell {
         artistLabel.text = nil
     }
     
-    func configure(searchItem: Media) {
-        titleLabel.text = searchItem.trackName
-        artistLabel.text = searchItem.artistName
+    func configure(item: Media) {
+        titleLabel.text = item.trackName
+        artistLabel.text = item.artistName
         
-        if let imageURL = URL(string: searchItem.artworkUrl600) {
+        if let imageURL = URL(string: item.artworkUrl600) {
             backgroundImageView.loadImage(from: imageURL)
         } else {
-            //backgroundImageView.image = UIImage(named: "musicPlaceholder")
+            backgroundImageView.contentMode = .center
+            backgroundImageView.image = UIImage(
+                systemName: "photo",
+                withConfiguration: UIImage.SymbolConfiguration(pointSize: 40)
+            )?.withTintColor(.systemGray, renderingMode: .alwaysOriginal)
         }
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        layer.shadowColor = UIColor { $0.userInterfaceStyle == .dark ? .white : .black }.cgColor
     }
 }

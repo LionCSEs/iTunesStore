@@ -6,15 +6,11 @@
 //
 
 import UIKit
-import Then
 import SnapKit
 
 class SearchSectionHeaderView: UICollectionReusableView {
     
-    private let titleLabel = UILabel().then {
-        $0.font = .systemFont(ofSize: 20, weight: .bold)
-        $0.textColor = .label
-    }
+    private let titleLabel = TitleLabel(fontSize: 20)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
