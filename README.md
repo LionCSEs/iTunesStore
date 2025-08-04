@@ -14,12 +14,13 @@ iTunes Search API를 통해 홈 화면에서 계절별 음악들을 보여주고
 ## 📌 주요 기능
 ### 1. 홈 화면
 - iTunes Search API를 기반으로 음악 조회
-- 봄, 여름, 가을, 겨울 계절별 섹션 분리
+- 봄, 여름, 가을, 겨울 계절별 섹션 분리 (UICollectionView Compositional Layout, DiffableDataSource 활용)
 - 다크 모드 지원
 
 ### 2. 검색 결과 화면
-- UISearchController로 음악 검색
+- UISearchController로 영화 및 팟캐스트 검색
 - 영화, 팟캐스트별 섹션 분리
+- 검색어 터치 시, 홈 화면으로 전환
 - 검색 결과 데이터가 없을 경우, 섹션별로 “검색 결과 없음” 표시
 - Rx로 키보드 제어 및 검색 상태 바인딩
 
@@ -33,9 +34,9 @@ iTunes Search API를 통해 홈 화면에서 계절별 음악들을 보여주고
 - iOS 16.0 이상 지원
 - `SnapKit` (레이아웃 제약 설정)
 - `URLSession` (API 호출)
-- RxSwift / RxCocoa (반응형 UI 처리)
-- Then (초기화 축약 표현)
-- Kingfisher (이미지 로딩)
+- `RxSwift` / `RxCocoa` / `RxRelay` (반응형 UI, 비동기 처리)
+- `Then` (초기화 축약 표현)
+- `Kingfisher` (이미지 로딩)
 
 <br>
 
@@ -76,7 +77,7 @@ iTunes Search API를 통해 홈 화면에서 계절별 음악들을 보여주고
 │   │   └── SearchViewModel.swift                     # 검색 데이터 관리
 │   ├── 📂 Utils/Extention/
 │   │   ├── UIImageView+.swift                        # 이미지 로딩
-│   │   ├── UIViewController+.swift                   # alert 창 띄우기
+│   │   └── UIViewController+.swift                   # alert 창 띄우기
 │   └── LayoutManager.swift                           # 컴포지셔널 레이아웃 관리
 ```
 
@@ -91,25 +92,27 @@ iTunes Search API를 통해 홈 화면에서 계절별 음악들을 보여주고
 <br>
 
 ## 💻 실행 화면
-- 추가 예정
+![Simulator Screen Recording - iPhone 16 Plus - 2025-08-04 at 17 50 02](https://github.com/user-attachments/assets/5be32ad8-efea-4540-b2cb-d003e08ffa9e)
 
 <br>
 
 ## 🐞 프로젝트 설명
-구현 과정에서 ViewController가 무거워지는 것을 방지하고 책임을 분리하기 위해 MVVM 패턴을 적용하였고, 이 과정에서 데이터 바인딩을 수월하게 하기 위해 RxSwift를 도입했습니다. 
+- ViewController가 무거워지는 것을 방지하고 책임을 분리하기 위해 MVVM 패턴 적용
+- ViewModel과 View 간의 데이터 바인딩을 수월하게 하기 위해 RxSwift/RxCocoa/RxRelay 활용
+- 직관적인 UI 레이아웃 구성을 위해 SnapKit 활용
+- 초기화 설정 축약 및 가독성을 위해 Then 활용
+- 비동기 이미지 처리 및 캐싱 최적화을 간단하게 처리하기 위해 Kingfisher 활용
 
 <br>
 
 ### 추상화
-- Music, Movie, Podcast를 Media 타입으로 추상화하여 Network의 중복 로직 최소화
+- Music, Movie, Podcast를 Media 타입으로 추상화
 
 ### 재사용성
-- 중복되는 UI들의 컴포넌트화
-- GradientView UI 컴포넌트 재사용
-- SpringMusicAndSearchCell: 봄, 검색 결과 셀
-- SubTitleLabel: 아티스트 이름 등 
-- TitleLabel: 노래/팟캐스트/영화 제목 등 
-- ErrorAlert를 extension으로 분리하여 각 화면에서 재사용
+- `GradientView`, `SubTitleLabel`, `TitleLabel` 중복되는 UI들 컴포넌트화
+- `SpringMusicAndSearchCell`: 봄, 검색 결과 셀
+- `NetworkManager`, `LayoutManager`
+- ErrorAlert를 extension으로 분리하여 화면에서 재사용
 
 ### 사용성 UX
 - 셀 배경에 그림자 추가, 다크모드 적용
@@ -120,7 +123,9 @@ iTunes Search API를 통해 홈 화면에서 계절별 음악들을 보여주고
 <br>
 
 ### 메모리 관리 분석
-- 추가 예정
+- Leaks Instrument를 활용하여 메모리 누수 여부 점검
+- 모든 기능 확인 결과, 메모리 누수 없음 확인
+<img width="1200" alt="image" src="https://github.com/user-attachments/assets/47052259-8d2d-40d9-ad04-654120e50155" />
 
 <br>
 
